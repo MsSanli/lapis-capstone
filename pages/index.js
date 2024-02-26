@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 // import Link from 'next/link';
 // import { Button } from 'react-bootstrap';
 import { useAuth } from '../utils/context/authContext';
-import getArtisans from '../api/artisanData';
+import { getArtisans } from '../api/artisanData';
 import ArtisanCard from '../components/ArtisanCard';
 
 function Home() {
