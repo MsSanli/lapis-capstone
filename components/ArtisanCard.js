@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
-import { propTypes } from 'react-bootstrap/esm/Image';
 import { deleteSingleArtisan } from '../api/artisanData';
 
 function ArtisanCard({ artisanObj, onUpdate }) {
@@ -22,7 +21,7 @@ function ArtisanCard({ artisanObj, onUpdate }) {
         <Link href={`/artisan/${artisanObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
-        <Link href={`/author/edit/${artisanObj.firebaseKey}`} passHref>
+        <Link href={`/artisan/edit/${artisanObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisArtisan} className="m-2">
@@ -42,7 +41,7 @@ ArtisanCard.propTypes = {
     firebaseKey: PropTypes.string,
     uid: PropTypes.string,
   }).isRequired,
-  onUpdate: propTypes.func.isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };
 
 export default ArtisanCard;
