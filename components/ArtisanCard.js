@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteSingleArtisan } from '../api/artisanData';
 
@@ -15,12 +14,10 @@ function ArtisanCard({ artisanObj, onUpdate }) {
 
   return (
     <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={artisanObj.image} style={{ height: '400px' }} />
+      <Card.Img variant="top" src={artisanObj.image} alt={artisanObj.name} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{artisanObj.name} </Card.Title>
-        <Link href={`/artisan/${artisanObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
-        </Link>
+        <Button variant="primary" className="m-2">VIEW</Button>
         <Link href={`/artisan/edit/${artisanObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
@@ -39,7 +36,7 @@ ArtisanCard.propTypes = {
     location: PropTypes.string,
     email: PropTypes.string,
     firebaseKey: PropTypes.string,
-    uid: PropTypes.string,
+    // uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
