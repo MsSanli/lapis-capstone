@@ -1,25 +1,40 @@
+// ARTISAN API CALLS CRUD ARTISANS?
+
 import { clientCredentials } from '../utils/client';
 
-// ARTISAN API CALLS
-// VIEW/READ ALL ARTISANS
 const endpoint = clientCredentials.databaseURL;
-
-const getArtisans = (uid) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/artisans.json?orderBy="uid"&equalTo="${uid}"`, {
+// READ
+const getArtisans = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/artisans.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
-    .then((data) => resolve(Object.values(data)))
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
-
-// CREATE ARTISANS
-// UPDATE ARTISANS
-// DELETE ARTISANS
-// FIXME: DELETE ARTISANS
+// CREATE
+const createArtisan = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/artisans.json`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+// DELETE
 const deleteSingleArtisan = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/artisans/${firebaseKey}.json`, {
     method: 'DELETE',
@@ -28,12 +43,27 @@ const deleteSingleArtisan = (firebaseKey) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
+
+// UPDATE
+const updateArtisan = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/artisans/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
     .then((data) => resolve(data))
     .catch(reject);
 });
 
 export {
   getArtisans,
+  createArtisan,
   deleteSingleArtisan,
+  updateArtisan,
 };
-// remember this is singular and when you have more promises, you'll have to put them in brackets and indent.
