@@ -17,6 +17,8 @@ function ArtisanCard({ artisanObj, onUpdate }) {
       <Card.Img variant="top" src={artisanObj.image} alt={artisanObj.name} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{artisanObj.name} </Card.Title>
+        <p>{artisanObj.location}</p>
+        <p>{artisanObj.email}</p>
         <Button variant="primary" className="m-2">VIEW</Button>
         <Link href={`/artisan/edit/${artisanObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
@@ -36,7 +38,7 @@ ArtisanCard.propTypes = {
     location: PropTypes.string,
     email: PropTypes.string,
     firebaseKey: PropTypes.string,
-    // uid: PropTypes.string,
+    uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

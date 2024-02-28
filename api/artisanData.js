@@ -21,6 +21,20 @@ const getArtisans = () => new Promise((resolve, reject) => {
     })
     .catch(reject);
 });
+
+// READ/GET SINGLE ARTISAN
+const getSingleArtisan = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/authors/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application.json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 // CREATE
 const createArtisan = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/artisans.json`, {
@@ -66,4 +80,5 @@ export {
   createArtisan,
   deleteSingleArtisan,
   updateArtisan,
+  getSingleArtisan,
 };
