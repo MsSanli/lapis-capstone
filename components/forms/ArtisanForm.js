@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
-import { useAuth } from '../../utils/context/authContext';
+// import { useAuth } from '../../utils/context/authContext';
 import { createArtisan, updateArtisan } from '../../api/artisanData';
 
 const initialState = {
@@ -17,11 +17,11 @@ const initialState = {
 function ArtisanForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
-  const { user } = useAuth;
+  // const { user } = useAuth;
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
-  }, [obj, user]);
+  }, [obj]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,11 +36,11 @@ function ArtisanForm({ obj }) {
     if (obj.firebaseKey) {
       updateArtisan(formInput).then(() => router.push(`/artisan/${obj.firebaseKey}`));
     } else {
-      const payload = { ...formInput, uid: user.uid };
+      const payload = { ...formInput };
       createArtisan(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateArtisan(patchPayload).then(() => {
-          router.push('/artisans');
+          router.push('/');
         });
       });
     }
