@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { getSingleArtisan } from '../../../api/artisanData';
 import ArtisanForm from '../../../components/forms/ArtisanForm';
 
-export default function EditArtisan() {
+function EditArtisan() {
   const [editItem, setEditItem] = useState({});
   const router = useRouter();
   // Grab firebaseKey
@@ -17,3 +17,5 @@ export default function EditArtisan() {
   // Pass obj to form
   return (<ArtisanForm obj={editItem} />);
 }
+
+export default EditArtisan;
