@@ -19,7 +19,9 @@ function ArtisanCard({ artisanObj, onUpdate }) {
         <Card.Title>{artisanObj.name} </Card.Title>
         <p>{artisanObj.location}</p>
         <p>{artisanObj.email}</p>
-        <Button variant="primary" className="m-2">VIEW</Button>
+        <Link href={`/artisan/${artisanObj.firebaseKey}`} passHref>
+          <Button variant="primary" className="m-2">VIEW</Button>
+        </Link>
         <Link href={`/artisan/edit/${artisanObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>

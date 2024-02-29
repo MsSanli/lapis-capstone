@@ -1,3 +1,4 @@
+// import React, { useEffect, useState } from 'react';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -14,10 +15,14 @@ const initialState = {
 };
 
 // pass in object below as a prop
+// function ArtisanForm({ obj }) {
+//   const [formInput, setFormInput] = useState(initialState);
+//   const router = useRouter();
+//   // const { user } = useAuth;
+
 function ArtisanForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
-  // const { user } = useAuth;
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
@@ -34,7 +39,7 @@ function ArtisanForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateArtisan(formInput).then(() => router.push(`/artisan/${obj.firebaseKey}`));
+      updateArtisan(formInput).then(() => router.push('/'));
     } else {
       const payload = { ...formInput };
       createArtisan(payload).then(({ name }) => {
@@ -74,8 +79,20 @@ function ArtisanForm({ obj }) {
         />
       </FloatingLabel>
 
+      {/* LOCATION INPUT  */}
+      <FloatingLabel controlId="floatingInput3" label="Enter Location!" className="mb-3">
+        <Form.Control
+          type="location"
+          placeholder="Enter locatoin"
+          name="location"
+          value={formInput.location}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+
       {/* EMAIL INPUT  */}
-      <FloatingLabel controlId="floatingInput3" label="Enter email!" className="mb-3">
+      <FloatingLabel controlId="floatingInput4" label="Enter email!" className="mb-3">
         <Form.Control
           type="email"
           placeholder="Enter email"
@@ -95,8 +112,10 @@ function ArtisanForm({ obj }) {
 ArtisanForm.propTypes = {
   obj: PropTypes.shape({
     image: PropTypes.string,
-    firebaseKey: PropTypes.string,
     name: PropTypes.string,
+    location: PropTypes.string,
+    email: PropTypes.string,
+    firebaseKey: PropTypes.string,
 
   }),
 };

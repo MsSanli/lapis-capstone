@@ -1,4 +1,4 @@
-// ARTISAN API CALLS CRUD ARTISANS?
+// ARTISAN API CALLS CRUD ARTISANS
 
 import { clientCredentials } from '../utils/client';
 
@@ -24,7 +24,7 @@ const getArtisans = () => new Promise((resolve, reject) => {
 
 // READ/GET SINGLE ARTISAN
 const getSingleArtisan = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/authors/${firebaseKey}.json`, {
+  fetch(`${endpoint}/artisans/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application.json',
@@ -79,6 +79,6 @@ export {
   getArtisans,
   createArtisan,
   deleteSingleArtisan,
-  updateArtisan,
   getSingleArtisan,
+  updateArtisan,
 };
