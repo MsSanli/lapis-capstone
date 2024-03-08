@@ -11,6 +11,7 @@ const initialState = {
   image: '',
   location: '',
   email: '',
+  wishlist: false,
   // need form element
 };
 
