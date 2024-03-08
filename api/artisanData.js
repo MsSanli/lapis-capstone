@@ -75,10 +75,25 @@ const updateArtisan = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const addToWishlist = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/artisans.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      const wishlistArtisan = Object.values(data).filter((item) => item.wishlist);
+      resolve(wishlistArtisan);
+    })
+    .catch(reject);
+});
 export {
   getArtisans,
   createArtisan,
   deleteSingleArtisan,
   getSingleArtisan,
   updateArtisan,
+  addToWishlist,
 };

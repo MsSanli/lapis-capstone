@@ -17,8 +17,8 @@ function ArtisanCard({ artisanObj, onUpdate }) {
       <Card.Img variant="top" src={artisanObj.image} alt={artisanObj.name} style={{ height: '400px' }} />
       <Card.Body>
         <Card.Title>{artisanObj.name} </Card.Title>
-        <p>{artisanObj.location}</p>
         <p>{artisanObj.email}</p>
+        <p>{artisanObj.location}</p>
         <Link href={`/artisan/${artisanObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
