@@ -80,18 +80,6 @@ function ArtisanForm({ obj }) {
         />
       </FloatingLabel>
 
-      {/* LOCATION INPUT
-      <FloatingLabel controlId="floatingInput3" label="Enter Location!" className="mb-3">
-        <Form.Control
-          type="location"
-          placeholder="Enter locatoin"
-          name="location"
-          value={formInput.location}
-          onChange={handleChange}
-          required
-        />
-      </FloatingLabel> */}
-
       {/* LOCATION INPUT  */}
       <FloatingLabel controlId="floatingInput3" label="Select Borough" className="mb-3">
         <Form.Control
