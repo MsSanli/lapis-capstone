@@ -81,15 +81,22 @@ function ArtisanForm({ obj }) {
       </FloatingLabel>
 
       {/* LOCATION INPUT  */}
-      <FloatingLabel controlId="floatingInput3" label="Enter Location!" className="mb-3">
+      <FloatingLabel controlId="floatingInput3" label="Select Borough" className="mb-3">
         <Form.Control
-          type="location"
-          placeholder="Enter locatoin"
+          as="select"
           name="location"
           value={formInput.location}
           onChange={handleChange}
           required
-        />
+        >
+          <option value="">Select Location</option>
+          <option value="Brooklyn">Brooklyn</option>
+          <option value="Bronx">Bronx</option>
+          <option value="Manhattan">Manhattan</option>
+          <option value="Staten Island">Staten Island</option>
+          <option value="Queens">Queens</option>
+          {/* Add more options as needed */}
+        </Form.Control>
       </FloatingLabel>
 
       {/* EMAIL INPUT  */}
