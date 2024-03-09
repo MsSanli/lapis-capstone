@@ -11,6 +11,7 @@ const initialState = {
   image: '',
   location: '',
   email: '',
+  wishlist: false,
   // need form element
 };
 
@@ -80,22 +81,15 @@ function ArtisanForm({ obj }) {
       </FloatingLabel>
 
       {/* LOCATION INPUT  */}
-
-      {/* LOCATION DROPDOWN */}
-      <FloatingLabel controlId="floatingSelect" label="Select Location" className="mb-3">
-        <Form.Select
+      <FloatingLabel controlId="floatingInput3" label="Enter Location!" className="mb-3">
+        <Form.Control
+          type="location"
+          placeholder="Enter locatoin"
           name="location"
           value={formInput.location}
           onChange={handleChange}
           required
-        >
-          <option value="">Select Location</option>
-          <option value="Brooklyn">Brooklyn</option>
-          <option value="Queens">Queens</option>
-          <option value="Bronx">Bronx</option>
-          <option value="Manhattan">Manhattan</option>
-          <option value="Staten Island">Staten Island</option>
-        </Form.Select>
+        />
       </FloatingLabel>
 
       {/* EMAIL INPUT  */}
