@@ -111,6 +111,17 @@ function ArtisanForm({ obj }) {
         />
       </FloatingLabel>
 
+      <FloatingLabel controlId="floatingInput5" label="Description" className="mb-3">
+        <Form.Control
+          type="description"
+          placeholder="Description"
+          name="description"
+          value={formInput.description}
+          onChange={handleChange}
+          required
+        />
+      </FloatingLabel>
+
       {/* SUBMIT BUTTON  */}
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Artisan </Button>
     </Form>
