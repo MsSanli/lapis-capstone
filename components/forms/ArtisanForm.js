@@ -69,7 +69,7 @@ function ArtisanForm({ obj }) {
       </FloatingLabel>
 
       {/* IMAGE INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="Artisan Work" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Artisan" className="mb-3">
         <Form.Control
           type="url"
           placeholder="Enter an image url"
