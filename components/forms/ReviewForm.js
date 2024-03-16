@@ -30,15 +30,15 @@ function ReviewForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateReview(formInput).then(() => router.push('/artisandetails'));
+      // Update existing review
+      updateReview(formInput)
+        .then(() => router.push(`/review/${obj.firebaseKey}`))
+        .catch((error) => console.error('Error updating review:', error));
     } else {
-      const payload = { ...formInput };
-      createReview(payload).then(({ reviewername }) => {
-        const patchPayload = { firebaseKey: reviewername };
-        updateReview(patchPayload).then(() => {
-          router.push('/artisandetails');
-        });
-      });
+      // Create new review
+      createReview(formInput)
+        .then(() => router.push(`/artisan/${formInput.artisanId}`)) // Redirect to artisan details page
+        .catch((error) => console.error('Error creating review:', error));
     }
   };
   return (
@@ -72,10 +72,10 @@ function ReviewForm({ obj }) {
       {/* reviewtext INPUT  */}
       <FloatingLabel controlId="floatingInput3" label="Thoughts?" className="mb-3">
         <Form.Control
-          type="reviewercomment"
+          type="reviewtext"
           placeholder="Say something nice.."
-          name="reviewercomment"
-          value={formInput.reviewercomment}
+          name="reviewtext"
+          value={formInput.reviewtext}
           onChange={handleChange}
           required
         />
