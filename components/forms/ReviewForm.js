@@ -30,32 +30,18 @@ function ReviewForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      // Update existing review
-      updateReview(formInput)
-        .then(() => router.push(`/review/${obj.firebaseKey}`))
-        .catch((error) => console.error('Error updating review:', error));
+      updateReview(formInput).then(() => router.push(`/review/${obj.firebaseKey}`));
     } else {
-      // Create new review
-      createReview(formInput)
-        .then(() => router.push(`/artisan/${formInput.artisanId}`))
-        .catch((error) => console.error('Error creating review:', error));
+      const payload = { ...formInput };
+      createReview(payload).then(({ reviewername }) => {
+        const patchPayload = { firebaseKey: reviewername };
+        // routing issue (?)
+        updateReview(patchPayload).then(() => {
+          router.push(`/artisan/${obj.firebaseKey}`);
+        });
+      });
     }
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (obj.firebaseKey) {
-  //     updateReview(formInput).then(() => router.push(`/review/${obj.firebaseKey}`));
-  //   } else {
-  //     const payload = { ...formInput };
-  //     createReview(payload).then(({ reviewername }) => {
-  //       const patchPayload = { firebaseKey: reviewername };
-  //       updateReview(patchPayload).then(() => {
-  //         router.push('/artisan/firebaseKey');
-  //       });
-  //     });
-  //   }
-  // };
 
   return (
     <Form onSubmit={handleSubmit}>

@@ -27,6 +27,7 @@ export default function ArtisanDetailsPage() {
       </Button>
 
       <Card style={{ width: '18rem' }}>
+        {console.warn(artisanDetails)};
         <Card.Img variant="top" src={artisanDetails.image} />
         <Card.Body>
           <Card.Title>{artisanDetails.name}</Card.Title>
