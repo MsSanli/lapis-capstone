@@ -1,8 +1,6 @@
 import { deleteSingleArtisan, getSingleArtisan, getArtisanReviews } from './artisanData';
 import { deleteSingleReview } from './reviewData';
 
-// do i need an artisanId?
-
 const viewArtisanDetails = (artisanfirebaseKey) => new Promise((resolve, reject) => {
   Promise.all([getSingleArtisan(artisanfirebaseKey), getArtisanReviews(artisanfirebaseKey)])
     .then(([artisanObject, artisanReviewsArray]) => {

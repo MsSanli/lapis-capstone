@@ -1,28 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Card, Button } from 'react-bootstrap';
-import { getSingleArtisan, getArtisanReviews } from '../../api/artisanData';
+import { viewArtisanDetails } from '../../api/mergeData';
 import ReviewCard from '../../components/ReviewCard';
 
-function ArtisanDetailsPage() {
+export default function ArtisanDetailsPage() {
+  const [artisanDetails, setArtisanDetails] = useState({});
   const router = useRouter();
   const { firebaseKey } = router.query;
-  const [artisan, setArtisan] = useState([]);
-  // review card usestate
-  const [reviews, setReviews] = useState([]);
 
+  // make call to API layer to get the data
   useEffect(() => {
-    if (firebaseKey) {
-      getSingleArtisan(firebaseKey)
-        .then((data) => setArtisan(data));
-
-      getArtisanReviews(firebaseKey)
-        .then((reviewsdata) => setReviews(reviewsdata));
-    }
+    viewArtisanDetails(firebaseKey).then(setArtisanDetails);
   }, [firebaseKey]);
 
-  // need to call api function to fetch artisan reviews and useeffect to update review state  fetch reviews for artisan?
-  // click event to navigate to ReviewForm component
+  //  takes me to ReviewForm
   const handleAddReview = () => {
     router.push('/review/new');
   };
@@ -35,25 +27,25 @@ function ArtisanDetailsPage() {
       </Button>
 
       <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={artisan.image} />
+        <Card.Img variant="top" src={artisanDetails.image} />
         <Card.Body>
-          <Card.Title>{artisan.name}</Card.Title>
+          <Card.Title>{artisanDetails.name}</Card.Title>
           <Card.Text>
-            <p>Location: {artisan.location}</p>
-            <p>Email: {artisan.email}</p>
-            <p>Description: {artisan.description}</p>
+            <p>Location: {artisanDetails.location}</p>
+            <p>Email: {artisanDetails.email}</p>
+            <p>Description: {artisanDetails.description}</p>
           </Card.Text>
         </Card.Body>
       </Card>
       <div>{/* Add description here */}</div>
 
       {/* Render review cards */}
-      {reviews.map((review) => (
-        <ReviewCard key={review.firebaseKey} review={review} />
+      {artisanDetails.reviews?.map((review) => (
+        <ReviewCard key={review.firebaseKey} reviewObj={review} onUpdate={viewArtisanDetails} />
       ))}
 
     </div>
   );
 }
 
-export default ArtisanDetailsPage;
+export { ArtisanDetailsPage };
