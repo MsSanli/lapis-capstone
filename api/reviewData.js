@@ -1,7 +1,7 @@
 import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
-// READ
+
 const getSingleReview = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`{endpoint}/reviews/${firebaseKey}.json`, {
     method: 'GET',
