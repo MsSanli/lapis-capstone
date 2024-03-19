@@ -70,8 +70,8 @@ function ArtisanCard({ artisanObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '18rem', margin: '10px' }}>
-      <Card.Img variant="top" src={artisanObj.image} alt={artisanObj.name} style={{ height: '400px' }} />
+    <Card style={{ width: '18rem', margin: '30px' }}>
+      <Card.Img variant="top" src={artisanObj.image} alt={artisanObj.name} style={{ height: '350px' }} />
       <Card.Body>
         <Card.Title>
           {artisanObj.name} {artisanObj.wishlist ? '🤍' : ''}
@@ -84,7 +84,7 @@ function ArtisanCard({ artisanObj, onUpdate }) {
         {/* <Link href={`/artisan/${artisanObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link> */}
-        <Link href={`/artisandetails?firebaseKey=${artisanObj.firebaseKey}`} passHref>
+        <Link href={`/artisan/${artisanObj.firebaseKey}`} passHref>
           <Button variant="primary" className="m-2">VIEW</Button>
         </Link>
         <Link href={`/artisan/edit/${artisanObj.firebaseKey}`} passHref>

@@ -27,7 +27,7 @@ const getSingleArtisan = (firebaseKey) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/artisans/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application.json',
+      'Content-Type': 'application/json', // Fixed typo here
     },
   })
     .then((response) => response.json())
@@ -89,6 +89,19 @@ const addToWishlist = () => new Promise((resolve, reject) => {
     })
     .catch(reject);
 });
+
+const getArtisanReviews = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/reviews.json?orderBy="artisan_id"equalTo="${firebaseKey}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
+
 export {
   getArtisans,
   createArtisan,
@@ -96,4 +109,5 @@ export {
   getSingleArtisan,
   updateArtisan,
   addToWishlist,
+  getArtisanReviews,
 };

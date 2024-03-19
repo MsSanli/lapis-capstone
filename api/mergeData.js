@@ -1,14 +1,22 @@
-// // artisandetails - look at simplybooks
-// import { getArtisans, getSingleArtisan, deleteSingleArtisan } from './artisanData';
+import { deleteSingleArtisan, getSingleArtisan, getArtisanReviews } from './artisanData';
+import { deleteSingleReview } from './reviewData';
 
-// const viewArtisanDetails = (artisanFirebaseKey) => new Promise((resolve, reject) => {
-//   getSingleArtisan(artisanFirebaseKey)
-//     .then((artisanObject) => {
-//       resolve(artisanObject);
-//     })
-//     .catch((error) => {
-//       reject(error);
-//     });
-// });
+const viewArtisanDetails = (artisanfirebaseKey) => new Promise((resolve, reject) => {
+  Promise.all([getSingleArtisan(artisanfirebaseKey), getArtisanReviews(artisanfirebaseKey)])
+    .then(([artisanObject, artisanReviewsArray]) => {
+      resolve({ ...artisanObject, reviews: artisanReviewsArray });
+    }).catch((error) => reject(error));
+});
 
-// export { getArtisans, getSingleArtisan, deleteSingleArtisan };
+const deleteArtisanReviews = (artisanId) => new Promise((resolve, reject) => {
+  getArtisanReviews().then((reviewsArray) => {
+    console.warn(reviewsArray, 'Artisan Reviews');
+    const deleteReviewPromises = reviewsArray.map((review) => deleteSingleReview(review.firebaseKey));
+
+    Promise.all(deleteReviewPromises).then(() => {
+      deleteSingleArtisan(artisanId).then(resolve);
+    });
+  }).catch((error) => reject(error));
+});
+
+export { deleteArtisanReviews, viewArtisanDetails };
