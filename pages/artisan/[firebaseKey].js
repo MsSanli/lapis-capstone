@@ -11,7 +11,11 @@ export default function ArtisanDetailsPage() {
 
   // make call to API layer to get the data
   useEffect(() => {
-    viewArtisanDetails(firebaseKey).then(setArtisanDetails);
+    if (firebaseKey) {
+      viewArtisanDetails(firebaseKey)
+        .then((data) => setArtisanDetails(data))
+        .catch((error) => console.error('Error fetching artisan details:', error));
+    }
   }, [firebaseKey]);
 
   //  takes me to ReviewForm
