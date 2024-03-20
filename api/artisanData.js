@@ -89,9 +89,9 @@ const addToWishlist = () => new Promise((resolve, reject) => {
     })
     .catch(reject);
 });
-
-const getArtisanReviews = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/reviews.json?orderBy="artisan_id"equalTo="${firebaseKey}"`, {
+// try passing artisan_id
+const getArtisanReviews = (artisanId) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/reviews.json?orderBy="artisan_id"&equalTo="${artisanId}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
