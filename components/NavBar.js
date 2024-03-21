@@ -60,9 +60,6 @@ export default function NavBar() {
             <Link passHref href="/review/new">
               <Nav.Link style={{ textShadow: '0 0 10px rgba(255,255,255,0.8)' }}>Add Review</Nav.Link>
             </Link>
-            <Link passHref href="/reviewpage">
-              <Nav.Link style={{ textShadow: '0 0 10px rgba(255,255,255,0.8)' }}>Reviews</Nav.Link>
-            </Link>
             <Link passHref href="/wishlist">
               <Nav.Link style={{ textShadow: '0 0 10px rgba(255,255,255,0.8)' }}>Wishlist</Nav.Link>
             </Link>

@@ -9,23 +9,9 @@ export default function ArtisanDetailsPage() {
   const router = useRouter();
   const { firebaseKey } = router.query;
 
-  // make call to API layer to get the data
   useEffect(() => {
     viewArtisanDetails(firebaseKey).then(setArtisanDetails);
   }, [firebaseKey]);
-
-  // const getTheArtisanDetails = () => {
-  //   viewArtisanDetails.apply(firebaseKey).then(setArtisanDetails);
-  // };
-
-  // useEffect(() => {
-  //   viewArtisanDetails(firebaseKey).then(setArtisanDetails);
-  // }, [firebaseKey]);
-
-  //  takes me to ReviewForm
-  // const handleAddReview = () => {
-  //   router.push('/review/new');
-  // };
 
   return (
     <>

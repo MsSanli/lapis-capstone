@@ -19,7 +19,7 @@ const viewReviewDetails = (reviewFirebaseKey) => new Promise((resolve, reject) =
 });
 
 const deleteArtisanReviews = (artisanId) => new Promise((resolve, reject) => {
-  getArtisanReviews().then((reviewsArray) => {
+  getArtisanReviews(artisanId).then((reviewsArray) => {
     console.warn(reviewsArray, 'Artisan Reviews');
     const deleteReviewPromises = reviewsArray.map((review) => deleteSingleReview(review.firebaseKey));
 
