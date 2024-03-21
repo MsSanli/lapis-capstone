@@ -87,29 +87,6 @@ function ReviewForm({ obj }) {
           required
         />
       </FloatingLabel>
-      {/* ARTISAN SELECT  */}
-      <FloatingLabel controlId="floatingSelect" label="Artisan">
-        <Form.Select
-          aria-label="Artisan"
-          name="artisan_id"
-          onChange={handleChange}
-          className="mb-3"
-          value={formInput.artisan_id} //
-          required
-        >
-          <option value="">Select Artisan</option>
-          {
-            artisans.map((artisan) => (
-              <option
-                key={artisan.firebaseKey}
-                value={artisan.firebaseKey}
-              >
-                {artisan.name}
-              </option>
-            ))
-          }
-        </Form.Select>
-      </FloatingLabel>
 
       {/* ARTISAN SELECT  */}
       <FloatingLabel controlId="floatingSelect" label="Artisan">
