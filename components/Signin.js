@@ -13,8 +13,8 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <h1>A NYC Artisan Hub</h1>
-      <p>Log in</p>
+
+      {/* <p>Log in</p> */}
       <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
         Sign In
       </Button>

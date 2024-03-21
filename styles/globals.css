@@ -20,6 +20,6 @@ body {
   background-image: url("../public/img/signinone.png");
   background-color: black;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: contain; /* Adjust the background size to contain */
   background-position: center; 
 }
