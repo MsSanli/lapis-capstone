@@ -8,6 +8,16 @@ const viewArtisanDetails = (artisanfirebaseKey) => new Promise((resolve, reject)
     }).catch((error) => reject(error));
 });
 
+const viewReviewDetails = (reviewFirebaseKey) => new Promise((resolve, reject) => {
+  getSingleReview(reviewFirebaseKey)
+    .then((reviewObject) => {
+      getSingleArtisan(reviewObject.artisan_id)
+        .then((artisanObject) => {
+          resolve({ artisanObject, ...reviewObject });
+        });
+    }).catch((error) => reject(error));
+});
+
 const deleteArtisanReviews = (artisanId) => new Promise((resolve, reject) => {
   getArtisanReviews(artisanId).then((reviewsArray) => {
     console.warn(reviewsArray, 'Artisan Reviews');
@@ -17,16 +27,6 @@ const deleteArtisanReviews = (artisanId) => new Promise((resolve, reject) => {
       deleteSingleArtisan(artisanId).then(resolve);
     });
   }).catch((error) => reject(error));
-});
-
-const viewReviewDetails = (reviewFirebaseKey) => new Promise((resolve, reject) => {
-  getSingleReview(reviewFirebaseKey)
-    .then((reviewObject) => {
-      getSingleArtisan(reviewObject.artisan_id)
-        .then((artisanObject) => {
-          resolve({ artisanObject, ...reviewObject });
-        });
-    }).catch((error) => reject(error));
 });
 
 export { deleteArtisanReviews, viewArtisanDetails, viewReviewDetails };
