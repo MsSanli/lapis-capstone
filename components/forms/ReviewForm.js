@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
 import { useAuth } from '../../utils/context/authContext';
+import { getArtisans } from '../../api/artisanData';
 import { createReview, updateReview } from '../../api/reviewData';
 
 const initialState = {
@@ -13,11 +14,13 @@ const initialState = {
 
 function ReviewForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  // useState(initialState);
+  const [artisans, setArtisans] = useState([]);
   const { user } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
+    getArtisans(user.uid).then(setArtisans);
+
     if (obj.firebaseKey) { setFormInput(obj); }
   }, [obj, user]);
 
@@ -39,7 +42,7 @@ function ReviewForm({ obj }) {
         const patchPayload = { firebaseKey: name };
         // routing issue (?)
         updateReview(patchPayload).then(() => {
-          router.push(`/artisan/${obj.artisan_id}`);
+          router.push('/');
         });
       });
     }
@@ -83,6 +86,29 @@ function ReviewForm({ obj }) {
           onChange={handleChange}
           required
         />
+      </FloatingLabel>
+      {/* ARTISAN SELECT  */}
+      <FloatingLabel controlId="floatingSelect" label="Artisan">
+        <Form.Select
+          aria-label="Artisan"
+          name="artisan_id"
+          onChange={handleChange}
+          className="mb-3"
+          value={formInput.artisan_id} //
+          required
+        >
+          <option value="">Select Artisan</option>
+          {
+            artisans.map((artisan) => (
+              <option
+                key={artisan.firebaseKey}
+                value={artisan.firebaseKey}
+              >
+                {artisan.name}
+              </option>
+            ))
+          }
+        </Form.Select>
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}

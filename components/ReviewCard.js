@@ -38,9 +38,9 @@ function ReviewCard({ reviewObj, onUpdate }) {
 ReviewCard.propTypes = {
   reviewObj: PropTypes.shape({
     reviewimage: PropTypes.string,
-    reviewername: PropTypes.string.isRequired,
+    reviewername: PropTypes.string,
     reviewtext: PropTypes.string,
-    firebaseKey: PropTypes.string.isRequired,
+    firebaseKey: PropTypes.string,
     uid: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,

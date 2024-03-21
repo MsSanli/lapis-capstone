@@ -40,13 +40,13 @@ function ArtisanForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateArtisan(formInput).then(() => router.push('/artisan/edit'));
+      updateArtisan(formInput).then(() => router.push('/'));
     } else {
       const payload = { ...formInput };
       createArtisan(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateArtisan(patchPayload).then(() => {
-          router.push('/artisan/new');
+          router.push('/');
         });
       });
     }

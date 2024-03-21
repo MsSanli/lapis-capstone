@@ -1,5 +1,5 @@
 import { deleteSingleArtisan, getSingleArtisan, getArtisanReviews } from './artisanData';
-import { deleteSingleReview } from './reviewData';
+import { deleteSingleReview, getSingleReview } from './reviewData';
 
 const viewArtisanDetails = (artisanfirebaseKey) => new Promise((resolve, reject) => {
   Promise.all([getSingleArtisan(artisanfirebaseKey), getArtisanReviews(artisanfirebaseKey)])
@@ -9,7 +9,7 @@ const viewArtisanDetails = (artisanfirebaseKey) => new Promise((resolve, reject)
 });
 
 const deleteArtisanReviews = (artisanId) => new Promise((resolve, reject) => {
-  getArtisanReviews().then((reviewsArray) => {
+  getArtisanReviews(artisanId).then((reviewsArray) => {
     console.warn(reviewsArray, 'Artisan Reviews');
     const deleteReviewPromises = reviewsArray.map((review) => deleteSingleReview(review.firebaseKey));
 
@@ -19,4 +19,14 @@ const deleteArtisanReviews = (artisanId) => new Promise((resolve, reject) => {
   }).catch((error) => reject(error));
 });
 
-export { deleteArtisanReviews, viewArtisanDetails };
+const viewReviewDetails = (reviewFirebaseKey) => new Promise((resolve, reject) => {
+  getSingleReview(reviewFirebaseKey)
+    .then((reviewObject) => {
+      getSingleArtisan(reviewObject.artisan_id)
+        .then((artisanObject) => {
+          resolve({ artisanObject, ...reviewObject });
+        });
+    }).catch((error) => reject(error));
+});
+
+export { deleteArtisanReviews, viewArtisanDetails, viewReviewDetails };
