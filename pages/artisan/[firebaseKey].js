@@ -10,12 +10,20 @@ export default function ArtisanDetailsPage() {
   const { firebaseKey } = router.query;
 
   // make call to API layer to get the data
+  // useEffect(() => {
+  //   if (firebaseKey) {
+  //     viewArtisanDetails(firebaseKey)
+  //       .then((data) => setArtisanDetails(data))
+  //       .catch((error) => console.error('Error fetching artisan details:', error));
+  //   }
+  // }, [firebaseKey]);
+
+  const getTheArtisanDetails = () => {
+    viewArtisanDetails.apply(firebaseKey).then(setArtisanDetails);
+  };
+
   useEffect(() => {
-    if (firebaseKey) {
-      viewArtisanDetails(firebaseKey)
-        .then((data) => setArtisanDetails(data))
-        .catch((error) => console.error('Error fetching artisan details:', error));
-    }
+    viewArtisanDetails(firebaseKey).then(setArtisanDetails);
   }, [firebaseKey]);
 
   //  takes me to ReviewForm
@@ -31,7 +39,6 @@ export default function ArtisanDetailsPage() {
       </Button>
 
       <Card style={{ width: '18rem' }}>
-        {console.warn(artisanDetails)};
         <Card.Img variant="top" src={artisanDetails.image} />
         <Card.Body>
           <Card.Title>{artisanDetails.name}</Card.Title>
@@ -46,7 +53,7 @@ export default function ArtisanDetailsPage() {
 
       {/* Render review cards */}
       {artisanDetails.reviews?.map((review) => (
-        <ReviewCard key={review.firebaseKey} reviewObj={review} onUpdate={viewArtisanDetails} />
+        <ReviewCard key={review.firebaseKey} reviewObj={review} onUpdate={getTheArtisanDetails} />
       ))}
 
     </div>

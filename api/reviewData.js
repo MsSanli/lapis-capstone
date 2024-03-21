@@ -3,7 +3,7 @@ import { clientCredentials } from '../utils/client';
 const endpoint = clientCredentials.databaseURL;
 
 const getSingleReview = (firebaseKey) => new Promise((resolve, reject) => {
-  fetch(`{endpoint}/reviews/${firebaseKey}.json`, {
+  fetch(`${endpoint}/reviews/${firebaseKey}.json`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -53,10 +53,42 @@ const updateReview = (payload) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
+// dont think I need getReviews. Not using
+const getReviews = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/reviews.json?orderBy="uid"&equalTo="${uid}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data) {
+        resolve(Object.values(data));
+      } else {
+        resolve([]);
+      }
+    })
+    .catch(reject);
+});
+
+const getUidReviews = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/reviews.json?orderBy="uid"&equalTo="${uid}"`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(Object.values(data)))
+    .catch(reject);
+});
 
 export {
   createReview,
   deleteSingleReview,
   updateReview,
   getSingleReview,
+  getReviews,
+  getUidReviews,
 };
