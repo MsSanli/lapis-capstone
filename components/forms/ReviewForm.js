@@ -49,7 +49,7 @@ function ReviewForm({ obj }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} style={{ width: '50%', margin: 'auto' }}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Review </h2>
 
       {/* reviewername INPUT  */}

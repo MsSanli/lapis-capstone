@@ -28,8 +28,8 @@ export default function NavBar() {
             <Link passHref href="/wishlist">
               <Nav.Link style={{ textShadow: '0 0 10px rgba(255,255,255,0.8)' }}>Wishlist</Nav.Link>
             </Link>
-            <Button variant="danger" onClick={signOut} style={{ textShadow: '0 0 10px rgba(255,255,255,0.8)' }}>Sign Out</Button>
           </Nav>
+          <Button variant="outline-danger" onClick={signOut} style={{ textShadow: '0 0 10px rgba(255,255,255,0.8)' }}>Sign Out</Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>
