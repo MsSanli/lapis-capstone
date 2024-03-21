@@ -17,5 +17,9 @@ a {
 }
 
 body {
-  background-color: navy;
+  background-image: url("../public/img/signinone.png");
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center; 
 }
