@@ -46,7 +46,7 @@ function ArtisanForm({ obj }) {
       createArtisan(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateArtisan(patchPayload).then(() => {
-          router.push('/artisan/new');
+          router.push('/');
         });
       });
     }

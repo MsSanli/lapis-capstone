@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Card, Button } from 'react-bootstrap';
 import { viewArtisanDetails } from '../../api/mergeData';
 import ReviewCard from '../../components/ReviewCard';
 
@@ -10,53 +10,44 @@ export default function ArtisanDetailsPage() {
   const { firebaseKey } = router.query;
 
   // make call to API layer to get the data
-  // useEffect(() => {
-  //   if (firebaseKey) {
-  //     viewArtisanDetails(firebaseKey)
-  //       .then((data) => setArtisanDetails(data))
-  //       .catch((error) => console.error('Error fetching artisan details:', error));
-  //   }
-  // }, [firebaseKey]);
-
-  const getTheArtisanDetails = () => {
-    viewArtisanDetails.apply(firebaseKey).then(setArtisanDetails);
-  };
-
   useEffect(() => {
     viewArtisanDetails(firebaseKey).then(setArtisanDetails);
   }, [firebaseKey]);
 
+  // const getTheArtisanDetails = () => {
+  //   viewArtisanDetails.apply(firebaseKey).then(setArtisanDetails);
+  // };
+
+  // useEffect(() => {
+  //   viewArtisanDetails(firebaseKey).then(setArtisanDetails);
+  // }, [firebaseKey]);
+
   //  takes me to ReviewForm
-  const handleAddReview = () => {
-    router.push('/review/new');
-  };
+  // const handleAddReview = () => {
+  //   router.push('/review/new');
+  // };
 
   return (
-    <div>
-      {/* Button to navigate to ReviewForm component */}
-      <Button onClick={handleAddReview} variant="primary" className="mb-3">
-        Add Review
-      </Button>
-
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={artisanDetails.image} />
-        <Card.Body>
-          <Card.Title>{artisanDetails.name}</Card.Title>
-          <Card.Text>
-            <p>Location: {artisanDetails.location}</p>
-            <p>Email: {artisanDetails.email}</p>
-            <p>Description: {artisanDetails.description}</p>
-          </Card.Text>
-        </Card.Body>
-      </Card>
-      <div>{/* Add description here */}</div>
-
-      {/* Render review cards */}
-      {artisanDetails.reviews?.map((review) => (
-        <ReviewCard key={review.firebaseKey} reviewObj={review} onUpdate={getTheArtisanDetails} />
-      ))}
-
-    </div>
+    <>
+      <div className="mt-5 d-flex flex-wrap">
+        <div className="d-flex flex-column">
+          <img src={artisanDetails.image} alt={artisanDetails.name} style={{ width: '200px' }} />
+        </div>
+        <div className="text-white ms-5 details">
+          <h5>
+            {artisanDetails.name}
+          </h5>
+          Artisan Email: <a href={`mailto:${artisanDetails.email}`}>{artisanDetails.email}</a>
+          <hr />
+        </div>
+      </div>
+      <hr />
+      <div className="d-flex flex-wrap">
+        {artisanDetails.reviews?.map((review) => (
+          <ReviewCard key={review.firebaseKey} reviewObj={review} onUpdate={viewArtisanDetails} />
+        ))}
+      </div>
+    </>
   );
 }
 
