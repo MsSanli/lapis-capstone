@@ -42,7 +42,7 @@ function ReviewForm({ obj }) {
         const patchPayload = { firebaseKey: name };
         // routing issue (?)
         updateReview(patchPayload).then(() => {
-          router.push('/reviewpage');
+          router.push('/');
         });
       });
     }
