@@ -57,7 +57,7 @@ function ArtisanForm({ obj }) {
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Artisan </h2>
 
       {/* Name INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="Name" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Artisan Name" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter name"
@@ -69,7 +69,7 @@ function ArtisanForm({ obj }) {
       </FloatingLabel>
 
       {/* IMAGE INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="Artisan" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Add Photo" className="mb-3">
         <Form.Control
           type="url"
           placeholder="Enter an image url"
@@ -81,7 +81,7 @@ function ArtisanForm({ obj }) {
       </FloatingLabel>
 
       {/* LOCATION INPUT  */}
-      <FloatingLabel controlId="floatingInput3" label="Select Borough" className="mb-3">
+      <FloatingLabel controlId="floatingInput3" label="Borough" className="mb-3">
         <Form.Control
           as="select"
           name="location"
@@ -100,7 +100,7 @@ function ArtisanForm({ obj }) {
       </FloatingLabel>
 
       {/* EMAIL INPUT  */}
-      <FloatingLabel controlId="floatingInput4" label="Enter email!" className="mb-3">
+      <FloatingLabel controlId="floatingInput4" label="Email" className="mb-3">
         <Form.Control
           type="email"
           placeholder="Enter email"
@@ -123,7 +123,7 @@ function ArtisanForm({ obj }) {
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Artisan </Button>
+      <Button type="submit" variant="outline-primary">{obj.firebaseKey ? 'Update' : 'Create'} Artisan </Button>
     </Form>
   );
 }
