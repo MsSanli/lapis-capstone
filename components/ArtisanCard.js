@@ -23,7 +23,7 @@ function ArtisanCard({ artisanObj, onUpdate }) {
       <Card.Img variant="top" src={artisanObj.image} alt={artisanObj.name} style={{ height: '290px' }} />
       <Card.Body>
         <Card.Title>
-          {artisanObj.name} {artisanObj.wishlist ? '🤍' : ''}
+          {artisanObj.name} {artisanObj.wishlist ? '💎' : ''}
           <Button variant="link" onClick={handleWishlistToggle}>
             {artisanObj.wishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
           </Button>
