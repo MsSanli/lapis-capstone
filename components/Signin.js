@@ -15,8 +15,8 @@ function Signin() {
     >
 
       {/* <p>Log in</p> */}
-      <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
-        Sign In
+      <Button type="button" size="lg" className="copy-btn" variant="outline" onClick={signIn}>
+        Welcome
       </Button>
     </div>
   );
