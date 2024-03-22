@@ -53,7 +53,7 @@ function ReviewForm({ obj }) {
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Review </h2>
 
       {/* reviewername INPUT  */}
-      <FloatingLabel controlId="floatingInput1" label="reviewername" className="mb-3">
+      <FloatingLabel controlId="floatingInput1" label="Your name" className="mb-3">
         <Form.Control
           type="text"
           placeholder="Enter name"
@@ -65,7 +65,7 @@ function ReviewForm({ obj }) {
       </FloatingLabel>
 
       {/* IMAGE INPUT  */}
-      <FloatingLabel controlId="floatingInput2" label="Artisan Work" className="mb-3">
+      <FloatingLabel controlId="floatingInput2" label="Review Photo" className="mb-3">
         <Form.Control
           type="url"
           placeholder="Enter an image url"
@@ -113,7 +113,7 @@ function ReviewForm({ obj }) {
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Review </Button>
+      <Button type="submit" variant="outline-primary">{obj.firebaseKey ? 'Update' : 'Create'} Review </Button>
     </Form>
   );
 }
