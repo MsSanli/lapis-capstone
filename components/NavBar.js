@@ -3,14 +3,24 @@ import Link from 'next/link';
 import {
   Navbar, Container, Nav, Button,
 } from 'react-bootstrap';
+import Image from 'next/image';
 import { signOut } from '../utils/auth';
+import logo from '../public/img/fixedlogo.png';
 
 export default function NavBar() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" className="custom-navbar" variant="dark">
       <Container>
         <Link passHref href="/">
-          <Navbar.Brand style={{ textShadow: '0 0 10px rgba(255,255,255,0.8)' }}>LAPIS</Navbar.Brand>
+          <Navbar.Brand>
+            <Image
+              src={logo}
+              className="img"
+              width={70}
+              height={70}
+              alt="logo navbar"
+            />
+          </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
