@@ -23,7 +23,7 @@ export default function ViewAllReviews() {
       <div className="text-white ms-5 details">
         <h5>
           {reviewDetails.reviewername} by {reviewDetails.artisanObject?.name}
-          {reviewDetails.artisanObject?.wishlsit ? ' 🤍' : ''}
+          {reviewDetails.artisanObject?.wishlsit ? ' 💎' : ''}
         </h5>
         Artisan Email: <a href={`mailto:${reviewDetails.artisanObject?.email}`}>{reviewDetails.artisanObject?.email}</a>
         <p>{reviewDetails.reviewtext || ''}</p>

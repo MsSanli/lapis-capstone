@@ -63,7 +63,7 @@ export default function ArtisanDetailsPage() {
         </div>
         <div className="text-white details">
           <h5>
-            {artisanDetails.name} {artisanDetails.wishlist ? '🤍' : ''}
+            {artisanDetails.name} {artisanDetails.wishlist ? '💎' : ''}
           </h5>
           <hr />
           <p>{artisanDetails.description || ''}</p>
