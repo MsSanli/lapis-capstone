@@ -18,12 +18,12 @@ function ReviewCard({ reviewObj, onUpdate }) {
         variant="top"
         src={reviewObj.reviewimage}
         alt={reviewObj.reviewername}
-        style={{ height: '100px' }}
+        style={{ height: '200px', objectFit: 'cover' }}
       />
       )}
       <Card.Body>
         <Card.Title>{reviewObj.reviewername}</Card.Title>
-        {reviewObj.reviewtext && <Card.Text>{reviewObj.reviewtext}</Card.Text>}
+        {reviewObj.reviewtext && <Card.Text style={{ fontSize: '14px' }}>{reviewObj.reviewtext}</Card.Text>}
         <Link href={`/review/edit/${reviewObj.firebaseKey}`} passHref>
           <Button variant="outline-info">EDIT</Button>
         </Link>
