@@ -19,7 +19,15 @@ function ArtisanCard({ artisanObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '16rem', margin: '30px' }}>
+    <Card style={{
+      width: '16rem',
+      margin: '30px',
+      backgroundColor: 'black',
+      color: 'white',
+      borderColor: 'whitesmoke',
+    }}
+    >
+
       <Card.Img variant="top" src={artisanObj.image} alt={artisanObj.name} style={{ height: '290px' }} />
       <Card.Body>
         <Card.Title>

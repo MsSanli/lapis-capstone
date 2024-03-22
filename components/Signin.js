@@ -8,15 +8,16 @@ function Signin() {
       className="text-center d-flex flex-column justify-content-center align-content-center"
       style={{
         height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
+        padding: '15px',
+        maxWidth: '120px',
         margin: '0 auto',
+        marginTop: '100px',
       }}
     >
 
       {/* <p>Log in</p> */}
-      <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
-        Sign In
+      <Button type="button" size="md" className="copy-btn" variant="dark" onClick={signIn}>
+        Welcome
       </Button>
     </div>
   );
