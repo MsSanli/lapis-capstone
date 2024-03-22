@@ -12,7 +12,16 @@ function ReviewCard({ reviewObj, onUpdate }) {
   };
 
   return (
-    <Card style={{ width: '16rem', margin: '10px' }}>
+    <Card style={{
+      width: '16rem',
+      margin: '10px',
+      // backgroundColor: 'whitesmoke',
+      // borderColor: 'black',
+      backgroundColor: 'black',
+      color: 'white',
+      borderColor: 'whitesmoke',
+    }}
+    >
       {reviewObj.reviewimage && (
       <Card.Img
         variant="top"
