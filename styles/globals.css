@@ -27,3 +27,7 @@ body {
 .custom-navbar {
   background-color: #08080a;
 }
+
+.glow {
+  box-shadow: 0 0 10px rgba(202, 194, 237, 0.8);
+}

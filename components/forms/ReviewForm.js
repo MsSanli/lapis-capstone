@@ -113,7 +113,7 @@ function ReviewForm({ obj }) {
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit" variant="outline-primary">{obj.firebaseKey ? 'Update' : 'Create'} Review </Button>
+      <Button type="submit" variant="outline-light" className="glow">{obj.firebaseKey ? 'Update' : 'Create'} Review </Button>
     </Form>
   );
 }

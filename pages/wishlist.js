@@ -16,12 +16,12 @@ export default function WishlistPage() {
 
   return (
     <div>
-      <div className="d-flex flex-wrap">
+      <div className="d-flex flex-wrap justify-content-center">
         {artisans.map((artisan) => <ArtisanCard key={artisan.firebaseKey} artisanObj={artisan} onUpdate={getArtisans} />)}
       </div>
       <div className="d-flex justify-content-center mt-3">
         <Link href="/" passHref>
-          <button type="button">Return to Home Page</button>
+          <button type="button" className="glow">Return to Home Page</button>
         </Link>
       </div>
     </div>

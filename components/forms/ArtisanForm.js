@@ -123,7 +123,7 @@ function ArtisanForm({ obj }) {
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit" variant="outline-primary">{obj.firebaseKey ? 'Update' : 'Create'} Artisan </Button>
+      <Button type="submit" variant="outline-light" className="glow">{obj.firebaseKey ? 'Update' : 'Create'} Artisan </Button>
     </Form>
   );
 }
