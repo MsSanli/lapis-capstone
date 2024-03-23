@@ -1,7 +1,22 @@
+# Overview: 
+#### This application intends to gather and unify the NYC community through the work of the newly arrived by consolidating artisan's location by borough, their personal story, contact info, and artisanship all at a user's easy access by web. 
+
+[See Live Demo of this Template](https://frontend-lapiscapstone.netlify.app/)
+
+# User Descripton
+- [A user of this app is someone who works with NYC expos, pop-ups, wholesale and retail and looking for an easier way to seek artisans at hand instead of actively seeking and contacting them one by one in different ways without any outside reviews.]
+- [Anyone with a business]
+- [Anyone who is welcoming to newcomers trying to accustome to a place they now call home ]
+- [Anyone who is looking to sponsor an organization or humanitarian cause ]
+
+## Features
+- [Authenticaton sign-in]
+- [All Artisans Page]
+- [Artisan Create/Edit/Del]
+- [Artisan Review Create/Edit/Del]
+- [Wishlist]
+
 # React/Next.js Template
-
-[See Live Demo of this Template](https://drt-next-js-template.netlify.app/)
-
 ## Topics
 - [Get Started](#get-started)
 - [Starting the Project](#starting-the-project)
@@ -59,3 +74,13 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Make sure there are no blank or empty files. Netlify will NOT build it! ]
+
+## dBdiagram 
+- [Link to my diagram](https://dbdiagram.io/d/capstone-65d5607dac844320aea02f05)
+
+## Figma Wireframe
+- [Link to my diagram](https://www.figma.com/file/V6ZWNoJlUrnaPktieJk1wr/LAPIS-CAPSTONE?type=whiteboard&node-id=0-1&t=d4q7udHotT5KT1cG-0) 
+
+## Canva Presentation
+- [Link to view my slides](https://www.canva.com/design/DAGAQVN3QVs/SMp2MqrMfc3kAD6Nj5UCKA/edit?utm_content=DAGAQVN3QVs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
