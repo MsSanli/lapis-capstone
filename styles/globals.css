@@ -17,9 +17,9 @@ a {
 }
 
 body {
-  background-image: url("../public/img/signinone.png");
+  background-image: url("../public/img/lapisbg.png");
   background-color: black;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: contain; 
   background-position: center; 
 }

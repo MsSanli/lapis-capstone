@@ -19,9 +19,11 @@ export default function WishlistPage() {
       <div className="d-flex flex-wrap">
         {artisans.map((artisan) => <ArtisanCard key={artisan.firebaseKey} artisanObj={artisan} onUpdate={getArtisans} />)}
       </div>
-      <Link href="/" passHref>
-        <button type="button">Return to Home Page</button>
-      </Link>
+      <div className="d-flex justify-content-center mt-3">
+        <Link href="/" passHref>
+          <button type="button">Return to Home Page</button>
+        </Link>
+      </div>
     </div>
   );
 }
