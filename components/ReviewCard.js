@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { deleteSingleReview } from '../api/reviewData';
 
 function ReviewCard({ reviewObj, onUpdate }) {
+  const router = useRouter();
   const deleteThisReview = () => {
     if (window.confirm(`Delete ${reviewObj.reviewername}?`)) {
-      deleteSingleReview(reviewObj.firebaseKey).then(() => onUpdate());
+      deleteSingleReview(reviewObj.firebaseKey).then(() => onUpdate(router.push('/')));
     }
   };
 
