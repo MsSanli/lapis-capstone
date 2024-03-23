@@ -9,7 +9,7 @@ function ArtisanCard({ artisanObj, onUpdate }) {
   const router = useRouter();
   const deleteThisArtisan = () => {
     if (window.confirm(`Delete ${artisanObj.name}?`)) {
-      deleteSingleArtisan(artisanObj.firebaseKey).then(() => (router.push('/')));
+      deleteSingleArtisan(artisanObj.firebaseKey).then(() => onUpdate(router.push('/')));
     }
   };
 
