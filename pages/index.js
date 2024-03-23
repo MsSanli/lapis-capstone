@@ -26,7 +26,7 @@ function Home() {
   return (
     <div className="text-center my-4">
       <Link href="/artisan/new" passHref>
-        <Button variant="outline-primary">Add Artisan</Button>
+        <Button variant="outline-primary" className="glow">Add Artisan</Button>
       </Link>
       <div className="d-flex flex-wrap">
         {/* map over artisans using ArtisanCard component */}
