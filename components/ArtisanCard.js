@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { deleteSingleArtisan, updateArtisan } from '../api/artisanData';
 
 function ArtisanCard({ artisanObj, onUpdate }) {
+  const router = useRouter();
   const deleteThisArtisan = () => {
     if (window.confirm(`Delete ${artisanObj.name}?`)) {
-      deleteSingleArtisan(artisanObj.firebaseKey).then(() => onUpdate());
+      deleteSingleArtisan(artisanObj.firebaseKey).then(() => (router.push('/')));
     }
   };
 
