@@ -125,7 +125,7 @@ ReviewForm.propTypes = {
     reviewtext: PropTypes.string,
     firebaseKey: PropTypes.string,
     artisan_id: PropTypes.string,
-
+    uid: PropTypes.string,
   }),
 };
 

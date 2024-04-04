@@ -4,8 +4,8 @@ import { clientCredentials } from '../utils/client';
 
 const endpoint = clientCredentials.databaseURL;
 // READ
-const getArtisans = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/artisans.json`, {
+const getArtisans = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/artisans.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -75,8 +75,8 @@ const updateArtisan = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const addToWishlist = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/artisans.json`, {
+const addToWishlist = (uid) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/artisans.json?orderBy="uid"&equalTo="${uid}"`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

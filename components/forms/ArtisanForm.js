@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { FloatingLabel, Form, Button } from 'react-bootstrap';
-// import { useAuth } from '../../utils/context/authContext';
+import { useAuth } from '../../utils/context/authContext';
 import { createArtisan, updateArtisan } from '../../api/artisanData';
 
 const initialState = {
@@ -15,19 +15,14 @@ const initialState = {
   // need form element
 };
 
-// pass in object below as a prop
-// function ArtisanForm({ obj }) {
-//   const [formInput, setFormInput] = useState(initialState);
-//   const router = useRouter();
-//   // const { user } = useAuth;
-
 function ArtisanForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const router = useRouter();
+  const { user } = useAuth();
 
   useEffect(() => {
     if (obj.firebaseKey) setFormInput(obj);
-  }, [obj]);
+  }, [obj, user]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -42,7 +37,7 @@ function ArtisanForm({ obj }) {
     if (obj.firebaseKey) {
       updateArtisan(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput };
+      const payload = { ...formInput, uid: user.uid };
       createArtisan(payload).then(({ name }) => {
         const patchPayload = { firebaseKey: name };
         updateArtisan(patchPayload).then(() => {
@@ -135,6 +130,7 @@ ArtisanForm.propTypes = {
     location: PropTypes.string,
     email: PropTypes.string,
     firebaseKey: PropTypes.string,
+    uid: PropTypes.string,
 
   }),
 };

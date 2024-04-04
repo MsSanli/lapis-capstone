@@ -53,7 +53,7 @@ const updateReview = (payload) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
-// dont think I need getReviews. Not using
+
 const getReviews = (uid) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/reviews.json?orderBy="uid"&equalTo="${uid}`, {
     method: 'GET',

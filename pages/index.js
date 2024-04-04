@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
-// import { useAuth } from '../utils/context/authContext';
+import { useAuth } from '../utils/context/authContext';
 import { getArtisans } from '../api/artisanData';
 import ArtisanCard from '../components/ArtisanCard';
 
@@ -11,11 +11,11 @@ function Home() {
   const [artisans, setArtisans] = useState([]);
 
   // get user ID using useAuth Hook
-  // const { user } = useAuth();
+  const { user } = useAuth();
 
   // create function that makes API call to get all artisans
   const getAllTheArtisans = () => {
-    getArtisans().then(setArtisans);
+    getArtisans(user.uid).then(setArtisans);
   };
 
   // make the call to the API to get all artisans on component to render
